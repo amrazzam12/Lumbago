@@ -10,4 +10,10 @@ class Admin extends Authenticatable
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function getAvatarAttribute(){
+        if (!$this->image)
+            return url('default.png');
+        return url('storage/' . $this->image);
+    }
 }

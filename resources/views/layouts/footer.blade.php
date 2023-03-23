@@ -26,10 +26,61 @@
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    $(document).ready(function() {
+        @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+        toastr.success("{{ session('message') }}");
+        @endif
+
+            @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+        toastr.error("{{ session('error') }}");
+        @endif
+
+            @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+        toastr.info("{{ session('info') }}");
+        @endif
+
+            @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+        toastr.warning("{{ session('warning') }}");
+        @endif
+    });
+
+</script>
+<script>
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}");
+        @endforeach
+    @endif
+    toastr.options = {
+        "preventDuplicates": true
+    }
+</script>
 @yield('script')
 
-<footer class="main-footer fixed-bottom">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">Lumbago Team</a>.</strong>
+<footer class="main-footer fixed-bottom text-center">
+    <strong>Copyright &copy;<a href="">Lumbago Team</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
 
