@@ -2,10 +2,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img src="{{auth()->user()->avatar}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">{{auth()->user()->name}}</a>
+            <a href="{{route('admins.edit' , auth()->user()->id)}}" class="d-block">{{auth()->user()->name}}</a>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
                     <p>
                         Accounts
                         <i class="fas fa-angle-left right"></i>
-                        <span class="badge badge-info right">6</span>
+{{--                        <span class="badge badge-info right"></span>--}}
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -32,13 +32,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('doctors.index')}}" class="nav-link">
                             <i class="fas fa-user-md nav-icon"></i>
                             <p>Doctors</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('users.index')}}" class="nav-link">
                             <i class="fas fa-user nav-icon"></i>
                             <p>Users</p>
                         </a>
@@ -47,14 +47,21 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('specialities.index')}}" class="nav-link">
+                    <i class="fas fa-stethoscope nav-icon"></i>
+                    <p>Available Specialities</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{route('clinics.index')}}" class="nav-link">
                     <i class="fas fa-clinic-medical nav-icon"></i>
                     <p>Clinics</p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('reservations.index')}}" class="nav-link">
                     <i class="fas fa-calendar-check nav-icon"></i>
                     <p>Clinics Reservations</p>
                 </a>

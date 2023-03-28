@@ -19,8 +19,8 @@ return new class extends Migration
             $table->float('price');
             $table->time('from_hour');
             $table->time('to_hour');
-            $table->foreignId('doctor_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->json('holidays')->nullable();
+            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->json('workdays');
             $table->timestamps();
         });
     }

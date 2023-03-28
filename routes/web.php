@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminsController;
+use App\Http\Controllers\Admin\ClinicReservationsController;
+use App\Http\Controllers\Admin\DoctorsController;
+use App\Http\Controllers\Admin\SpecialitiesController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\ClinicsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +33,50 @@ Route::middleware('auth')->group(function () {
         Route::post('/{id}' , 'update')->name('admins.update');
         Route::delete('/{id}' , 'delete')->name('admins.delete');
     });
+
+    Route::controller(SpecialitiesController::class)->prefix('specialities')->group(function (){
+        Route::get('/' , 'index')->name('specialities.index');
+        Route::get('/create' , 'create')->name('specialities.create');
+        Route::post('/' , 'store')->name('specialities.store');
+        Route::get('/{id}' , 'edit')->name('specialities.edit');
+        Route::post('/{id}' , 'update')->name('specialities.update');
+        Route::delete('/{id}' , 'delete')->name('specialities.delete');
+    });
+    Route::controller(DoctorsController::class)->prefix('doctors')->group(function (){
+        Route::get('/' , 'index')->name('doctors.index');
+        Route::get('/create' , 'create')->name('doctors.create');
+        Route::post('/' , 'store')->name('doctors.store');
+        Route::get('/{id}' , 'edit')->name('doctors.edit');
+        Route::post('/{id}' , 'update')->name('doctors.update');
+        Route::delete('/{id}' , 'delete')->name('doctors.delete');
+    });
+
+    Route::controller(UsersController::class)->prefix('users')->group(function (){
+        Route::get('/' , 'index')->name('users.index');
+        Route::get('/create' , 'create')->name('users.create');
+        Route::post('/' , 'store')->name('users.store');
+        Route::get('/{id}' , 'edit')->name('users.edit');
+        Route::post('/{id}' , 'update')->name('users.update');
+        Route::delete('/{id}' , 'delete')->name('users.delete');
+    });
+
+    Route::controller(ClinicsController::class)->prefix('clinics')->group(function (){
+        Route::get('/' , 'index')->name('clinics.index');
+        Route::get('/create/{id}' , 'create')->name('clinics.create');
+        Route::post('/{doctor_id}' , 'store')->name('clinics.store');
+        Route::get('/{id}' , 'edit')->name('clinics.edit');
+        Route::put('/{id}' , 'update')->name('clinics.update');
+        Route::delete('/{id}' , 'delete')->name('clinics.delete');
+    });
+
+    Route::controller(ClinicReservationsController::class)->prefix('reservations')->group(function (){
+       Route::get('/' , 'index')->name('reservations.index');
+       Route::post('/{id}' , 'changeStatus')->name('reservations.changeStatus');
+       Route::delete('/{id}' , 'delete')->name('reservations.delete');
+    });
+
+
+
 
 
 

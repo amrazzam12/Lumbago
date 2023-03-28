@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ClinicReservation extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function clinic(){
+        return $this->belongsTo(Clinic::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

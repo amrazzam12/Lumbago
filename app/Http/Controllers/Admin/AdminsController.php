@@ -16,7 +16,7 @@ class AdminsController extends Controller
     use ImageUploader;
     public function index(){
         return view('admin.Accounts.admins.index' , [
-            'admins' => Admin::orderBy('role')->paginate(5)
+            'admins' => Admin::orderBy('role')->paginate(25)
         ]);
     }
 
@@ -70,7 +70,6 @@ class AdminsController extends Controller
         try {
             Admin::find($id)->delete();
             return to_route('admins.index')->with('message' , "Admin Deleted !");
-
         }catch (\Exception $e){
             return back()->with('error' , "Something Went Wrong");
 
