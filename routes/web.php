@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ClinicReservationsController::class)->prefix('reservations')->group(function (){
        Route::get('/' , 'index')->name('reservations.index');
-       Route::post('/{id}' , 'changeStatus')->name('reservations.changeStatus');
+       Route::post('/' , 'changeStatus')->name('reservations.changeStatus');
        Route::delete('/{id}' , 'delete')->name('reservations.delete');
     });
 

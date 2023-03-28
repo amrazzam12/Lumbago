@@ -54,7 +54,7 @@
                                                     </a></td>
                                                 <td>
                                                     <div class="form-group">
-                                                        <select id="status" class="custom-select form-control-border border-width-2">
+                                                        <select data-res="{{$res['id']}}" id="status" class="custom-select form-control-border border-width-2">
                                                             <option @selected($res->status == "RESERVED")>Reserved</option>
                                                             <option @selected($res->status == "COMPLETED")>Completed</option>
                                                             <option @selected($res->status == "CANCELED")>Canceled</option>
@@ -110,12 +110,15 @@
 @section('script')
     <script>
         $('#status').on('change' , function (){
-            var status = $('#status').find(":selected").val();
+            const status = $('#status').find(":selected").val();
+            const resId = $('#status').attr('data-res')
+            console.log(resId);
             $.ajax({
-                url: "{{route('reservations.changeStatus' , $res->id)}}",
+                url: "{{route('reservations.changeStatus')}}",
                 type: "post",
                 data: {
                     status : status,
+                    resId : resId,
                     _token: '{!! csrf_token() !!}',
                 },
                 success: function(data) {

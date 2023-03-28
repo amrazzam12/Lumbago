@@ -14,9 +14,9 @@ class ClinicReservationsController extends Controller
         ]);
     }
 
-    public function changeStatus($id , Request $request){
+    public function changeStatus(Request $request){
         try {
-            ClinicReservation::select('id' , 'status')->find($id)
+            ClinicReservation::select('id' , 'status')->find($request['resId'])
                 ->update([
                     'status' => $request['status'],
             ]);
