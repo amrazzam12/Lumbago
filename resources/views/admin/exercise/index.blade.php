@@ -7,13 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Doctors</h1>
+                        <h1>Exercises</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item">Accounts</li>
-                            <li class="breadcrumb-item active">Doctors</li>
+                            <li class="breadcrumb-item active">Exercises</li>
                         </ol>
                     </div>
                 </div>
@@ -27,7 +26,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('doctors.create') }}"><button class="btn btn-dark">Add Doctor <i
+                                <a href="{{ route('exercise.create') }}"><button class="btn btn-dark">Add Exercise <i
                                             class=" ml-1 fa fa-plus"></i></button></a>
                                 <div class="card-tools">
                                     <div class="input-group input-group-md" style="width: 100%;">
@@ -47,37 +46,26 @@
                                     <thead class="bg-gradient-gray-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Years Of Experience</th>
-                                            <th>Image</th>
-                                            <th>Operations</th>
+                                            <th>Exercise</th>
+                                            <th>Video Link</th>
+                                            <th>Description</th>
+                                            <th>Icon</th>
+                                            <th >Operations</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($doctors as $key => $doctor)
+                                        @foreach ($exercises as $key => $exercise)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $doctor->name }}</td>
-                                                <td>{{ $doctor->email }}</td>
-                                                <td>{{ $doctor->years_of_experience }}</td>
+                                                <td>{{ $exercise->name }}</td>
+                                                <td>{{ $exercise->video_link }}</td>
+                                                <td>{{ $exercise->description }}</td>
+
                                                 <td class="text-center"><img width="40px" height="50px"
-                                                        src="{{ $doctor->avatar }}"></td>
+                                                        src="{{ $exercise->icon }}"></td>
                                                 <td>
 
-                                                    @if ($doctor->clinic)
-                                                        <a href="{{ route('clinics.edit', $doctor->clinic->id) }}">
-                                                            <button class="btn btn-success">Show Clinic <i
-                                                                    class="fa-solid fa-house-chimney-medical"></i></button>
-                                                        </a>
-                                                    @else
-                                                        <a href="{{ route('clinics.create', $doctor['id']) }}">
-                                                            <button class="btn btn-success">Assign Clinic <i
-                                                                    class="fa-solid fa-house-chimney-medical"></i></button>
-                                                        </a>
-                                                    @endif
-
-                                                    <a href="{{ route('doctors.edit', $doctor['id']) }}">
+                                                    <a href="{{ route('exercise.edit', $exercise['id']) }}">
                                                         <button class="btn btn-dark">Edit <i
                                                                 class="fa fa-pen ml-1"></i></button>
                                                     </a>
@@ -102,7 +90,7 @@
                                                                         Close
                                                                     </button>
                                                                     <form
-                                                                        action="{{ route('doctors.delete', $doctor['id']) }}"
+                                                                        action="{{ route('exercise.delete', $exercise['id']) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         {{ method_field('DELETE') }}
@@ -119,7 +107,7 @@
                                     </tbody>
                                 </table>
                                 <div class="d-flex mt-3">
-                                    {!! $doctors->links() !!}
+                                    {!! $exercises->links() !!}
                                 </div>
                             </div>
                             <!-- /.card-body -->

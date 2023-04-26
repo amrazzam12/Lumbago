@@ -68,20 +68,20 @@
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('review.index')}}" class="nav-link">
                     <i class="fas fa-comments nav-icon"></i>
                     <p>Clinics Reviews</p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('categories.index')}}" class="nav-link">
                     <i class="fas fa-bars nav-icon"></i>
                     <p>Exercises Categories</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('exercise.index')}}" class="nav-link">
                     <i class="fas fa-dumbbell nav-icon"></i>
                     <p>Exercises</p>
                 </a>

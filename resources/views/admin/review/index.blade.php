@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -7,13 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Doctors</h1>
+                        <h1>Reviews</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item">Accounts</li>
-                            <li class="breadcrumb-item active">Doctors</li>
+                            <li class="breadcrumb-item active">Reviews</li>
                         </ol>
                     </div>
                 </div>
@@ -27,17 +25,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('doctors.create') }}"><button class="btn btn-dark">Add Doctor <i
-                                            class=" ml-1 fa fa-plus"></i></button></a>
+                                <a href="{{route('review.create')}}"><button class="btn btn-dark">Add Review<i class=" ml-1 fa fa-plus"></i></button></a>
+
+
                                 <div class="card-tools">
                                     <div class="input-group input-group-md" style="width: 100%;">
-                                        {{--                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search"> --}}
-
-                                        {{--                                        <div class="input-group-append"> --}}
-                                        {{--                                            <button type="submit" class="btn btn-default"> --}}
-                                        {{--                                                <i class="fas fa-search"></i> --}}
-                                        {{--                                            </button> --}}
-                                        {{--                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -47,37 +39,24 @@
                                     <thead class="bg-gradient-gray-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Years Of Experience</th>
-                                            <th>Image</th>
+                                            <th>User</th>
+                                            <th>Clinic</th>
+                                            <th>Rate</th>
+                                            <th>Review</th>
                                             <th>Operations</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($doctors as $key => $doctor)
+                                        @foreach ($reviews as $key => $review)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $doctor->name }}</td>
-                                                <td>{{ $doctor->email }}</td>
-                                                <td>{{ $doctor->years_of_experience }}</td>
-                                                <td class="text-center"><img width="40px" height="50px"
-                                                        src="{{ $doctor->avatar }}"></td>
+                                                <td>{{ $review->user->name }}</td>
+                                                {{-- <td style="min-width: 150px;max-width: 250px" > --}}
+                                                <td>  {{ $review->clinic->id }}</td>
+                                                <td>{{ $review->rate }}</td>
+                                                <td style="min-width: 150px">{{ $review->review }}</td>
                                                 <td>
-
-                                                    @if ($doctor->clinic)
-                                                        <a href="{{ route('clinics.edit', $doctor->clinic->id) }}">
-                                                            <button class="btn btn-success">Show Clinic <i
-                                                                    class="fa-solid fa-house-chimney-medical"></i></button>
-                                                        </a>
-                                                    @else
-                                                        <a href="{{ route('clinics.create', $doctor['id']) }}">
-                                                            <button class="btn btn-success">Assign Clinic <i
-                                                                    class="fa-solid fa-house-chimney-medical"></i></button>
-                                                        </a>
-                                                    @endif
-
-                                                    <a href="{{ route('doctors.edit', $doctor['id']) }}">
+                                                    <a href="{{ route('review.edit', $review['id']) }}">
                                                         <button class="btn btn-dark">Edit <i
                                                                 class="fa fa-pen ml-1"></i></button>
                                                     </a>
@@ -102,7 +81,7 @@
                                                                         Close
                                                                     </button>
                                                                     <form
-                                                                        action="{{ route('doctors.delete', $doctor['id']) }}"
+                                                                        action="{{ route('review.delete', $review['id']) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         {{ method_field('DELETE') }}
@@ -118,16 +97,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="d-flex mt-3">
-                                    {!! $doctors->links() !!}
-                                </div>
+
                             </div>
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
                 </div>
-
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
