@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DoctorsController;
+use App\Http\Controllers\Api\exercisesCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(AuthController::class)->group(function (){
-   Route::post('register' , 'register');
-   Route::post('login' , 'login');
-   Route::post('logout' , 'logout')->middleware('auth:api');
+Route::controller(AuthController::class)->group(function () {
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+    Route::post('logout', 'logout')->middleware('auth:api');
+});
+
+
+Route::controller(DoctorsController::class)->group(function () {
+    Route::get('doctors', 'index');
+});
+Route::controller(exercisesCategoriesController::class)->group(function () {
+    Route::get('exercisesCategories', 'index');
 });

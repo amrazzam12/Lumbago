@@ -39,4 +39,9 @@ class Exercise extends Model
         return url('storage/' . $this->image);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(ExerciseCategory::class , 'category_id');
+    }
+
 }
