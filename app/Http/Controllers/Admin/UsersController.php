@@ -29,6 +29,7 @@ class UsersController extends Controller
         try {
             $user = User::create([
                 'name' => $request['name'],
+                "user_name" => $request['user_name'],
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
                 'age' => $request['age'],
@@ -57,6 +58,7 @@ class UsersController extends Controller
                 $password = Hash::make($request['password']);
             $user->update([
                 'name' => $request['name'],
+                "user_name" => $request['user_name'],
                 'email' => $request['email'],
                 'password' => $password,
                 'age' => $request['age'],

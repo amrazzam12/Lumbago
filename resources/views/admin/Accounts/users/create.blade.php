@@ -20,6 +20,11 @@
                             </div>
 
                             <div class="form-group col-6">
+                                <label for="name">Username</label>
+                                <input type="text" name="username" class="form-control" id="name" placeholder="Enter User's Name">
+                            </div>
+
+                            <div class="form-group col-6">
                                 <label for="email">Email Address</label>
                                 <input type="email" name="email" class="form-control" id="email" placeholder="Enter User's Email">
                             </div>

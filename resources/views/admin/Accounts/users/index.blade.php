@@ -48,6 +48,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Username</th>
                                         <th>Email</th>
                                         <th>Gender</th>
                                         <th>Age</th>
@@ -60,6 +61,7 @@
                                             <tr>
                                                 <td>{{$key + 1}}</td>
                                                 <td>{{$user->name}}</td>
+                                                <td>{{$user->user_name}}</td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->gender}}</td>
                                                 <td>{{$user->age}}</td>
