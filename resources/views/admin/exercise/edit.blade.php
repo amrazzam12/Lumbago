@@ -41,7 +41,7 @@
                             <div class="form-group col-6">
                                 <label for="video_link">Video Link</label>
                                 <input type="text" name="video_link" class="form-control" id="video_link"
-                                    placeholder="Enter Video Link" value="{{ $exercise['duration_in_minutes'] }}">
+                                    placeholder="Enter Video Link" value="{{ $exercise['video_link'] }}">
                             </div>
 
 
